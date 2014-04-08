@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mytophome_cjsj", "mytophome_cjsj\mytophome_cjsj.csproj", "{06E2EE87-D3A5-4B9F-8575-FF28786B626A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{58D312CD-145C-4B9D-8AA1-D5F0DCA722AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mytophome_cssj", "mytophome_cssj\mytophome_cssj.csproj", "{02A4C7B8-8212-4A5F-ADCF-698AF1FA84C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06E2EE87-D3A5-4B9F-8575-FF28786B626A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E2EE87-D3A5-4B9F-8575-FF28786B626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E2EE87-D3A5-4B9F-8575-FF28786B626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E2EE87-D3A5-4B9F-8575-FF28786B626A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D312CD-145C-4B9D-8AA1-D5F0DCA722AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D312CD-145C-4B9D-8AA1-D5F0DCA722AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D312CD-145C-4B9D-8AA1-D5F0DCA722AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D312CD-145C-4B9D-8AA1-D5F0DCA722AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02A4C7B8-8212-4A5F-ADCF-698AF1FA84C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A4C7B8-8212-4A5F-ADCF-698AF1FA84C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A4C7B8-8212-4A5F-ADCF-698AF1FA84C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A4C7B8-8212-4A5F-ADCF-698AF1FA84C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
