@@ -26,7 +26,7 @@ namespace DTZ.YGJY
                 HistorycsLog historycsLog = new HistorycsLog();
                 if (FileHelper.FileExists(logFileName))
                 {
-                    historycsLog = DataModelHelper.ToObjFromJSON<HistorycsLog>(FileHelper.ReadFile(logFileName));
+                    historycsLog = StrHelper.FromJson<HistorycsLog>(FileHelper.ReadFile(logFileName));
                     if (historycsLog.ProjectID.Count > 200)
                     {
                         historycsLog.ProjectID.RemoveRange(0, historycsLog.ProjectID.Count - 200);
@@ -90,7 +90,7 @@ namespace DTZ.YGJY
 
                         historycsLog.ProjectID.Add(pro.ProjectID);
                         historycsLog.RunDate = DateTime.Now.ToString("yyyy-MM-dd");
-                        FileHelper.SaveFile(DataModelHelper.ToJSON(historycsLog), logFileName);
+                        FileHelper.SaveFile(StrHelper.ToJson(historycsLog), logFileName);
 
                     }
                     catch (Exception e)

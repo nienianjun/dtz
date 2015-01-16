@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DTZ.Helper
 {
@@ -16,6 +18,31 @@ namespace DTZ.Helper
         /// 
         /// </summary>
         public static Regex RegexFont = new Regex(@"<font color=" + "\".*?\"" + @">([\s\S]+?)</font>", StrHelper.GetRegexCompiledOptions());
+
+
+        /// <summary>
+        /// 将指定类型的对象转换成JSON格式字符串
+        /// </summary>
+        /// <typeparam name="T">指定的类型</typeparam>
+        /// <param name="obj">待转换的对象</param>
+        /// <returns></returns>
+        public static String ToJson<T>(T obj)
+        {
+            IsoDateTimeConverter iso = new IsoDateTimeConverter();
+            iso.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+            return JsonConvert.SerializeObject(obj, iso);
+        }
+
+        /// <summary>
+        /// 将JSON格式字符串转换成指定类型的对象
+        /// </summary>
+        /// <typeparam name="T">指定的类型</typeparam>
+        /// <param name="json">待转换的JSON格式字符串</param>
+        /// <returns></returns>
+        public static T FromJson<T>(String json)
+        {
+            return (T)JsonConvert.DeserializeObject(json, typeof(T));
+        }
 
         /// <summary>
         /// 得到正则编译参数设置

@@ -55,10 +55,10 @@
     <ApplicationIcon>Ico.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2EDCA0A0B4B4B7159083158F869462D83D8AF042</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3CFAE9F3C028F39A23D412BA8A8D35F14107F50E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DTZ.YGJY_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DTZ.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -69,6 +69,13 @@
   <PropertyGroup>
     <StartupObject>DTZ.YGJY.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Biff8Excel">
       <HintPath>..\DLL\Biff8Excel.dll</HintPath>
@@ -78,6 +85,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +119,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Helper\DTZ.Helper.csproj">
       <Project>{bfa44157-2930-428c-80f1-67e3bc85f05a}</Project>
