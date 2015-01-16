@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTZ.YGJY", "YGJY\DTZ.YGJY.csproj", "{2885C169-1F2E-435A-A0F3-129079185F0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTZ.Helper", "Helper\DTZ.Helper.csproj", "{BFA44157-2930-428C-80F1-67E3BC85F05A}"
