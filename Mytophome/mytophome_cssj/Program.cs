@@ -128,7 +128,8 @@ namespace mytophome_cssj
                     //    intMaxPage = int.Parse(Math.Ceiling(int.Parse(strMaxPage) / 24.0).ToString());
                     //}
                     //Console.WriteLine("intMaxPage : " + intMaxPage);
-                    List<EstateSell> listTemp = GetarrEstateSell(GetXmlHttp(string.Format(strUrl, intOffset.ToString())));      
+                    string s = GetXmlHttp(string.Format(strUrl, intOffset.ToString()));
+                    List<EstateSell> listTemp = GetarrEstateSell(s);      
 
                     DateTime inputSJ = DateTime.Parse(strYear + "-" + strMonth + "-" + strDay);
                     for (int o = 0; o < listTemp.Count; o++)
@@ -203,7 +204,7 @@ namespace mytophome_cssj
             List<EstateSell> listES = new List<EstateSell>();
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(pageHtml);
-            HtmlNodeCollection nodes = doc.GetElementbyId("style1").SelectNodes("div");
+            HtmlNodeCollection nodes = doc.GetElementbyId("style1").SelectNodes("//li[@class='lb_list01']");
             foreach (HtmlNode nodeTemp in nodes)            
             {
                 HtmlDocument htmlDoc = new HtmlDocument();
@@ -212,29 +213,28 @@ namespace mytophome_cssj
 
                 EstateSell estateSell = new EstateSell();
 
-                estateSell.BT = node.SelectSingleNode("//div[@class='title'][1]/a[1]").InnerText;
+                estateSell.BT = node.SelectSingleNode("//li[@class='two_word_li01'][1]/a[1]").InnerText;
                 //Console.WriteLine("标题：" + estateSell.BT);
 
-                String sTemp = node.SelectSingleNode("//div[@class='op_li_area1'][1]").InnerHtml.Replace("<br>", "-");
-                sTemp = StrHelper.ClearHTML(sTemp);
-                estateSell.LP = sTemp.Split('-')[0].Trim();
-                estateSell.QY = sTemp.Split('-')[sTemp.Split('-').Length-1].Trim();
+                String sTemp = node.SelectSingleNode("//div[@class='fy_di01'][1]").InnerText.Replace("&nbsp;", " ");
+                //sTemp = StrHelper.ClearHTML(sTemp);
+                estateSell.LP = sTemp.Split('[')[0].Trim();
+                estateSell.QY = sTemp.Split('[')[1].Split(' ')[0];
                 //Console.WriteLine("区域：" + estateSell.QY);
                 //Console.WriteLine("楼盘：" + estateSell.LP);
 
-                estateSell.HX = node.SelectSingleNode("//div[@class='op_li_room'][1]").InnerText;
+                estateSell.HX = node.SelectSingleNode("//div[@class='two_li02_div02'][1]").InnerText;
                 //Console.WriteLine("户型：" + estateSell.HX);
 
-                estateSell.MJ = node.SelectSingleNode("//div[@class='op_li_mj'][1]").InnerText.Replace("平方", "");
+                estateSell.MJ = node.SelectSingleNode("//div[@class='two_li02_div02'][2]").InnerText.Replace("平方", "");
                 //Console.WriteLine("面积：" + estateSell.MJ);
 
-                estateSell.CJJ = node.SelectSingleNode("//div[@class='op_li_price1'][1]/span[1]").InnerText;
+                estateSell.CJJ = node.SelectSingleNode("//div[@class='two_li02_div03_w'][1]/span[1]").InnerText;
                 //Console.WriteLine("成交价：" + estateSell.CJJ);
-                sTemp = StrHelper.ClearHTML(node.SelectSingleNode("//div[@class='op_li_price1'][1]").InnerHtml.Replace("<br>", "-"));
-                estateSell.DJ = sTemp.Split('-')[1].Replace("预约看房", "").Trim().Replace("元/平方", "");
+                estateSell.DJ = node.SelectSingleNode("//div[@class='two_li02_div03_w'][2]").InnerText.Replace("元/平方", "");
                 //Console.WriteLine("单价：" + estateSell.DJ);
 
-                sTemp = StrHelper.ClearHTML(node.SelectSingleNode("//span[@class='text_9992'][1]").InnerText.Trim());
+                sTemp = node.SelectSingleNode("//span[@class='a03'][1]").InnerText.Trim();
                 if (sTemp.IndexOf("天") >= 0)
                 {
                     sTemp = Regex.Split(sTemp, "天", RegexOptions.IgnoreCase)[0].Substring(1);

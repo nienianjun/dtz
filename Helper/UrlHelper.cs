@@ -53,7 +53,7 @@ namespace DTZ.Helper
             Req.AllowAutoRedirect = true;
             Req.MaximumAutomaticRedirections = 10;
             // 超时时间30000=30秒
-            Req.Timeout = 30000;
+            Req.Timeout = 10000;
             //  是否建立TCP持久连接
             Req.KeepAlive = false;
 
