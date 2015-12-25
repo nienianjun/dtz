@@ -45,7 +45,6 @@ namespace DTZ.Helper
         /// <returns></returns>
         public static string GetUrlHtml(string sUrl, string encoding)
         {
-            Console.WriteLine("      " + sUrl);
             HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(sUrl);
             Req.Referer = UrlHelper._referer;
             Req.Method = "GET";

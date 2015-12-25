@@ -128,6 +128,7 @@ namespace mytophome_cssj
                     //    intMaxPage = int.Parse(Math.Ceiling(int.Parse(strMaxPage) / 24.0).ToString());
                     //}
                     //Console.WriteLine("intMaxPage : " + intMaxPage);
+                    Console.Write("  加载第 " + intPage + " 页数据");
                     string s = GetXmlHttp(string.Format(strUrl, intOffset.ToString()));
                     List<EstateSell> listTemp = GetarrEstateSell(s);      
 
@@ -150,21 +151,22 @@ namespace mytophome_cssj
                         else
                             break;
                     }
-
+                    Console.WriteLine("成功。");
                     intError = 0;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("");
-                    Console.WriteLine("" + "第" + intPage + "页数据分析出错。错误提示：" + ex.ToString());
-
+                    Console.WriteLine("失败。错误提示：" + ex.Message);
                     intError++;
-                    if (intError < 1)
+                    if (intError < 3)
                     {
-                        Console.WriteLine("等待20秒后继续运行...");
-                        Thread.Sleep(20000);
-                        Console.WriteLine("");
+                        Console.WriteLine("      等待10秒后重新加载...");
+                        Thread.Sleep(10000);
                         intPage--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("      连续加载3次失败，跳过当前页。");
                     }
                 }
 
@@ -272,6 +274,7 @@ namespace mytophome_cssj
         /// <returns></returns>
         static string GetXmlHttp(string strUrl)
         {
+            Thread.Sleep(2000);
             return UrlHelper.GetUrlHtml(strUrl, "GBK");            
             //return FileHelper.ReadFile("temp.html","UTF-8");
         }
